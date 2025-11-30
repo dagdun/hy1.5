@@ -4,16 +4,19 @@
     "type": "serverless",
     "category": "video",
     "iconUrl": "https://huggingface.co/spaces/AI-ModelScope/HunyuanVideo-1.5/resolve/main/logo.png",
-  
     "config": {
-      "runsOn": "GPU",
-      "containerDiskInGb": 100,
-  
-      "gpuCount": 1,
-      "gpuIds": "RTX_4090,RTX_5090",
-      "memoryInGb": 64,
-      "allowedCudaVersions": [
-        "12.8"
-      ]
+        "runsOn": "GPU",
+        "containerDiskInGb": 100,
+        "gpuCount": 1,
+        "gpuIds": "RTX_4090,RTX_5090",
+        "memoryInGb": 64,
+        "allowedCudaVersions": [
+            "12.8"
+        ]
+    },
+    "build": {
+        "args": {
+            "HF_TOKEN": "${secrets.HF_TOKEN}"
+        }
     }
 }
