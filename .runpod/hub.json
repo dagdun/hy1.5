@@ -1,0 +1,18 @@
+{
+    "title": "HunyuanVideo-1.5 480P distilled",
+    "description": "HunyuanVideo-1.5 is a state-of-the-art text-to-video generation model developed by Alibaba's DAMO Academy. It is capable of generating high-quality videos from textual descriptions, leveraging advanced diffusion techniques and large-scale training data. This particular version is a distilled model optimized for 480P video generation, balancing performance and resource efficiency.",
+    "type": "serverless",
+    "category": "video",
+    "iconUrl": "https://huggingface.co/spaces/AI-ModelScope/HunyuanVideo-1.5/resolve/main/logo.png",
+  
+    "config": {
+      "runsOn": "GPU",
+      "containerDiskInGb": 100,
+  
+      "gpuCount": 1,
+      "gpuIds": "RTX_4090,RTX_5090",
+      "allowedCudaVersions": [
+        "12.8"
+      ]
+    }
+}
