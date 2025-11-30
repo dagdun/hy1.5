@@ -148,16 +148,16 @@ download_variant_ckpts() {
 }
 
 download_text_encoders() {
+  log "Downloading Glyph tokenizer weights via ModelScope ($GLYPH_MODEL)"
+  modelscope download \
+    --model "$GLYPH_MODEL" \
+    --local_dir "$MODEL_DIR/text_encoder/Glyph-SDXL-v2"
+
   log "Downloading Qwen text encoder ($QWEN_REPO)"
   hf_snapshot "$QWEN_REPO" "$MODEL_DIR/text_encoder/llm"
 
   log "Downloading ByT5 encoder ($BYT5_REPO)"
   hf_snapshot "$BYT5_REPO" "$MODEL_DIR/text_encoder/byt5-small"
-
-  log "Downloading Glyph tokenizer weights via ModelScope ($GLYPH_MODEL)"
-  modelscope download \
-    --model "$GLYPH_MODEL" \
-    --local_dir "$MODEL_DIR/text_encoder/Glyph-SDXL-v2"
 }
 
 download_vision_encoder() {
@@ -194,8 +194,8 @@ install_sageattention() {
   )
 }
 
-download_variant_ckpts
 download_text_encoders
+download_variant_ckpts
 download_vision_encoder
 install_sageattention
 

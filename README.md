@@ -5,7 +5,7 @@ This repository now contains a reproducible Docker image that boots the official
 ## Build Instructions
 
 1. Obtain a Hugging Face token with access to `black-forest-labs/FLUX.1-Redux-dev` (required for the SigLIP encoder).
-2. Build the image while passing the token:
+2. Build the image while passing the token (any of `HF_TOKEN`, `HY_SIGLIP_TOKEN`, `HUGGINGFACE_TOKEN`, or `RUNPOD_HF_TOKEN` work—pick whichever is most convenient for your CI/CD or RunPod secret wiring):
 
    ```bash
    docker build \
@@ -14,6 +14,26 @@ This repository now contains a reproducible Docker image that boots the official
    ```
 
    The build runs `setup_hunyuan.sh`, installs all Python dependencies inside `/opt/hunyuan/.venv`, clones the upstream repository into `/opt/hunyuan/HunyuanVideo-1.5`, and downloads every checkpoint into `/opt/hunyuan/HunyuanVideo-1.5/ckpts`.
+
+   On RunPod Hub, add a build secret named (for example) `RUNPOD_HF_TOKEN` and wire it through `.runpod/hub.json` or the dashboard as a Docker build argument:
+
+   ```jsonc
+   {
+     "build": {
+       "args": {
+         "RUNPOD_HF_TOKEN": "${secrets.RUNPOD_HF_TOKEN}"
+       },
+       "secrets": [
+         {
+           "name": "RUNPOD_HF_TOKEN",
+           "description": "Hugging Face token with access to FLUX.1-Redux-dev"
+         }
+       ]
+     }
+   }
+   ```
+
+   Any one of the supported argument names ultimately becomes `HY_SIGLIP_TOKEN` for `setup_hunyuan.sh`, so pick whichever naming scheme matches your platform.
 
 ## Local Testing
 
