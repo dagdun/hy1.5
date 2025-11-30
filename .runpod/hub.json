@@ -12,6 +12,11 @@
         "memoryInGb": 64,
         "allowedCudaVersions": [
             "12.8"
+        ],
+        "env": [
+            {
+                "key": "HF_TOKEN"
+            }
         ]
     },
     "build": {
