@@ -11,6 +11,7 @@
   
       "gpuCount": 1,
       "gpuIds": "RTX_4090,RTX_5090",
+      "memoryInGb": 64,
       "allowedCudaVersions": [
         "12.8"
       ]

@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 
-FROM nvidia/cuda:12.2.2-cudnn9-runtime-ubuntu22.04
+FROM nvidia/cuda:12.6.3-cudnn-runtime-ubuntu24.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Etc/UTC \
